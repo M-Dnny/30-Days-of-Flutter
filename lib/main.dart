@@ -12,16 +12,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List restaurants = [
-    'Naaz Hotel',
-    'Sahara Hotel',
-    'Swiggy',
-    'Zomato',
-    'Ammi ke haath Ka khana',
-    'Dhaba'
-  ];
+  // Create List ramdom generation
 
-   var currentIndex;
+  List restaurants = ['McDonald\'s', 'Pizza Hut', 'Swiggy', 'Zomato', 'Ghar ki Maggi'];
+
+  // This property hold the list texts and send them ramdomly
+
+  var currentIndex;
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,9 +27,21 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('What do you want to eat?'),
-              Padding(padding: EdgeInsets.all(16.0)),
+              // Text Widget 0
+
+              Text('From where do you want to eat?',
+                  style: TextStyle(fontSize: 23)),
+
+              // Padding
+
+              Padding(padding: EdgeInsets.all(30.0)),
+
+              // if currentIndex is null then pass text widget 1
+
               if (currentIndex != null)
+
+                // Text Widget 1, Passing restaurant list with currentIndex to generate ramdom list texts
+
                 Text(
                   restaurants[currentIndex],
                   style: TextStyle(
@@ -41,19 +50,22 @@ class _MyAppState extends State<MyApp> {
                   ),
                   textAlign: TextAlign.center,
                 ),
-              Padding(padding: EdgeInsets.all(16.0)),
+              Padding(padding: EdgeInsets.all(25.0)),
+
+              // TextButton, by clicking on the textbutton random text will dispay with the help of updateIndex property in onpressed
+
               TextButton(
                 onPressed: () {
                   updateIndex();
                 },
                 child: Text(
-                  'Random Restaurent Generator',
+                  'Generate',
+                  style: TextStyle(color: Colors.black, fontSize: 20),
                 ),
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.amber,
+                  backgroundColor: Colors.blue.shade100,
                   primary: Colors.blue,
                   padding: EdgeInsets.all(15),
-                  textStyle: TextStyle(color: Colors.black, fontSize: 30),
                 ),
               ),
             ],
@@ -62,6 +74,8 @@ class _MyAppState extends State<MyApp> {
       ),
     );
   }
+
+  // Helps to pick list texts
 
   void updateIndex() {
     final random = Random();
